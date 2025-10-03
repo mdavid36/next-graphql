@@ -12,14 +12,16 @@ const PagWithTotal = ({ data, page, setPage }: PagWithTotalProps) => {
     <Container sx={{ mb: 2, display: "flex", justifyContent: "flex-end" }}>
       <Box display="flex" alignItems="center" mr={2}>
         <Typography variant="body1" color="text.primary">
-          Total: {data.info.count}
+          Total: {data.info.count || 0}
         </Typography>
       </Box>
-      <Pagination
-        count={data.info.pages}
-        page={page}
-        onChange={(_, value) => setPage(value)}
-      />
+      {!!data.info.pages && (
+        <Pagination
+          count={data.info.pages}
+          page={page}
+          onChange={(_, value) => setPage(value)}
+        />
+      )}
     </Container>
   );
 };

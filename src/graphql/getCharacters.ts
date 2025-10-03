@@ -14,17 +14,29 @@ export type characterData = {
   characters: {
     results: Character[];
     info: {
-      count: number;
+      count: number | null;
       next: number | null;
-      pages: number;
+      pages: number | null;
       prev: number | null;
     };
   };
 };
 
+export type CharactersVars = {
+  page: number;
+  filter?: FilterCharacter;
+};
+export type FilterCharacter = {
+  name?: string;
+  species?: string;
+  gender?: string;
+  type?: string;
+  status?: string;
+};
+
 const GET_CHARACTERS = gql`
-  query GetCharacters($page: Int) {
-    characters(page: $page) {
+  query GetCharacters($page: Int, $filter: FilterCharacter) {
+    characters(page: $page, filter: $filter) {
       results {
         id
         name
@@ -43,10 +55,13 @@ const GET_CHARACTERS = gql`
   }
 `;
 
-const useGetCharacters = (page: number) => {
-  const { error, data } = useSuspenseQuery<characterData>(GET_CHARACTERS, {
-    variables: { page: page },
-  });
+const useGetCharacters = (filter: CharactersVars) => {
+  const { error, data } = useSuspenseQuery<characterData, CharactersVars>(
+    GET_CHARACTERS,
+    {
+      variables: { ...filter },
+    }
+  );
   return { error, data };
 };
 

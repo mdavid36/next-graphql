@@ -2,16 +2,23 @@
 import React, { Suspense, useState } from "react";
 import Characters from "@/components/Characters";
 import { CircularProgress, Container } from "@mui/material";
-import useGetCharacters from "@/graphql/getCharacters";
+import useGetCharacters, { CharactersVars } from "@/graphql/getCharacters";
 
 function Page() {
-  const [page, setPage] = useState(1);
-  const { error, data } = useGetCharacters(page);
+  const [filter, setFilter] = useState<CharactersVars>({
+    page: 1,
+    filter: {},
+  });
+  const { error, data } = useGetCharacters(filter);
   if (error) return <p>Error: {error.message}</p>;
   return (
     <Container>
       <Suspense fallback={<CircularProgress size="3rem" />}>
-        <Characters data={data.characters} page={page} setPage={setPage} />
+        <Characters
+          data={data.characters}
+          filter={filter}
+          setFilter={setFilter}
+        />
       </Suspense>
     </Container>
   );
