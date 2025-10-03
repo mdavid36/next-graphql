@@ -1,27 +1,40 @@
 import { Alert, Container, Grid, Typography } from "@mui/material";
 
 import CharacterCard from "./CharacterCard";
-import { characterData, CharactersVars } from "@/graphql/getCharacters";
+import { CharactersSearchResults } from "@/graphql/getCharacters";
 import PagWithTotal from "./PagWithTotal";
+import CharacterFilterForm, {
+  CharacterFilterFormProps,
+} from "./forms/CharacterFitlerForm";
 
-export type CharactersParams = {
-  data: characterData["characters"];
-  filter: CharactersVars;
-  setFilter: React.Dispatch<React.SetStateAction<CharactersVars>>;
-};
+export interface CharactersParams extends CharacterFilterFormProps {
+  data: CharactersSearchResults["characters"];
+}
 
-const Characters = ({ data, filter, setFilter }: CharactersParams) => {
+const Characters = ({
+  data,
+  searchParams,
+  setSearchParams,
+}: CharactersParams) => {
   const handleSetPage = (page: number) => {
-    setFilter((prev) => ({ ...prev, page }));
+    setSearchParams((prev) => ({ ...prev, page }));
   };
   const Pagination = (
-    <PagWithTotal data={data} page={filter.page} setPage={handleSetPage} />
+    <PagWithTotal
+      data={data}
+      page={searchParams.page}
+      setPage={handleSetPage}
+    />
   );
   return (
     <Container>
       <Typography variant="h2" color="text.primary">
         Characters
       </Typography>
+      <CharacterFilterForm
+        setSearchParams={setSearchParams}
+        searchParams={searchParams}
+      />
       {Pagination}
       <Grid container spacing={2}>
         {data.results.length ? (

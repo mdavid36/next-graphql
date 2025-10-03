@@ -10,7 +10,7 @@ export type Character = {
   status: string;
 };
 
-export type characterData = {
+export type CharactersSearchResults = {
   characters: {
     results: Character[];
     info: {
@@ -22,9 +22,9 @@ export type characterData = {
   };
 };
 
-export type CharactersVars = {
+export type CharactersSearchParams = {
   page: number;
-  filter?: FilterCharacter;
+  filter: FilterCharacter;
 };
 export type FilterCharacter = {
   name?: string;
@@ -32,6 +32,14 @@ export type FilterCharacter = {
   gender?: string;
   type?: string;
   status?: string;
+};
+
+export const defaultCharacterFilters: FilterCharacter = {
+  name: "",
+  species: "",
+  gender: "",
+  type: "",
+  status: "",
 };
 
 const GET_CHARACTERS = gql`
@@ -55,13 +63,13 @@ const GET_CHARACTERS = gql`
   }
 `;
 
-const useGetCharacters = (filter: CharactersVars) => {
-  const { error, data } = useSuspenseQuery<characterData, CharactersVars>(
-    GET_CHARACTERS,
-    {
-      variables: { ...filter },
-    }
-  );
+const useGetCharacters = (filter: CharactersSearchParams) => {
+  const { error, data } = useSuspenseQuery<
+    CharactersSearchResults,
+    CharactersSearchParams
+  >(GET_CHARACTERS, {
+    variables: { ...filter },
+  });
   return { error, data };
 };
 

@@ -2,22 +2,25 @@
 import React, { Suspense, useState } from "react";
 import Characters from "@/components/Characters";
 import { CircularProgress, Container } from "@mui/material";
-import useGetCharacters, { CharactersVars } from "@/graphql/getCharacters";
+import useGetCharacters, {
+  CharactersSearchParams,
+  defaultCharacterFilters,
+} from "@/graphql/getCharacters";
 
 function Page() {
-  const [filter, setFilter] = useState<CharactersVars>({
+  const [searchParams, setSearchParams] = useState<CharactersSearchParams>({
     page: 1,
-    filter: {},
+    filter: defaultCharacterFilters,
   });
-  const { error, data } = useGetCharacters(filter);
+  const { error, data } = useGetCharacters(searchParams);
   if (error) return <p>Error: {error.message}</p>;
   return (
     <Container>
       <Suspense fallback={<CircularProgress size="3rem" />}>
         <Characters
           data={data.characters}
-          filter={filter}
-          setFilter={setFilter}
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
         />
       </Suspense>
     </Container>
