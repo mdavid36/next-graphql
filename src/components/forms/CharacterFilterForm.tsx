@@ -22,7 +22,7 @@ const CharacterFilterForm = ({
     setSearchParams(() => ({ page: 1, filter: { ...data } }));
   };
   return (
-    <Container>
+    <Container disableGutters>
       <Box mb={2}>
         <Typography variant="h6" color="text.primary">
           Filter your character search

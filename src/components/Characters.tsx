@@ -1,11 +1,10 @@
-import { Alert, Container, Grid, Typography } from "@mui/material";
-
-import CharacterCard from "./CharacterCard";
+import { Alert, Grid } from "@mui/material";
+import CharacterCard from "./character/card/CharacterCard";
 import { CharactersSearchResults } from "@/graphql/getCharacters";
 import PagWithTotal from "./PagWithTotal";
 import CharacterFilterForm, {
   CharacterFilterFormProps,
-} from "./forms/CharacterFitlerForm";
+} from "./forms/CharacterFilterForm";
 
 export interface CharactersParams extends CharacterFilterFormProps {
   data: CharactersSearchResults["characters"];
@@ -27,10 +26,7 @@ const Characters = ({
     />
   );
   return (
-    <Container>
-      <Typography variant="h2" color="text.primary">
-        Characters
-      </Typography>
+    <>
       <CharacterFilterForm
         setSearchParams={setSearchParams}
         searchParams={searchParams}
@@ -40,7 +36,7 @@ const Characters = ({
         {data.results.length ? (
           data.results.map((character) => (
             <Grid size={{ xs: 12, md: 4, lg: 3 }} key={character.id}>
-              <CharacterCard character={character} />
+              <CharacterCard character={character} key={character.id} />
             </Grid>
           ))
         ) : (
@@ -48,7 +44,7 @@ const Characters = ({
         )}
       </Grid>
       {Pagination}
-    </Container>
+    </>
   );
 };
 
