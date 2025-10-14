@@ -7,14 +7,6 @@ export const nameValidation = Yup.string()
 export const requiredNameValidation =
   nameValidation.required("Name is required");
 
-export const emailValidation = Yup.string()
-  .typeError("Awe Shoot!! We need a string here")
-  .email("Invalid email format")
-  .max(100, "Email must be at most 100 characters");
-
-export const requiredEmailValidation =
-  emailValidation.required("Email is required");
-
 export const speciesValidation = Yup.string().typeError(
   "Awe Shoot!! We need a string here"
 );
