@@ -3,10 +3,11 @@ import CharacterCard from "./character/card/CharacterCard";
 import { CharactersSearchResults } from "@/graphql/getCharacters";
 import PagWithTotal from "./PagWithTotal";
 import CharacterFilterForm, {
-  CharacterFilterFormProps,
-} from "./forms/CharacterFilterForm";
+  CharacterFilterFormShellProps,
+} from "./forms/CharacterFilter/CharacterFilterFormShell";
+import ActiveFilters from "./forms/CharacterFilter/ActiveFilters";
 
-export interface CharactersParams extends CharacterFilterFormProps {
+export interface CharactersParams extends CharacterFilterFormShellProps {
   data: CharactersSearchResults["characters"];
 }
 
@@ -31,6 +32,7 @@ const Characters = ({
         setSearchParams={setSearchParams}
         searchParams={searchParams}
       />
+      <ActiveFilters filters={searchParams.filter} />
       {Pagination}
       <Grid container spacing={2}>
         {data.results.length ? (

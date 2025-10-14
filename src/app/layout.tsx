@@ -4,6 +4,7 @@ import "./globals.css";
 import ProviderWrapper from "../providers/ProviderWrapper";
 import { Container } from "@mui/material";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
+import MainNavigation from "@/components/navigation/MainNavigation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +32,7 @@ export default function RootLayout({
         <AppRouterCacheProvider>
           <ProviderWrapper>
             <Container sx={{ bgcolor: "background.default" }}>
+              <MainNavigation />
               {children}
             </Container>
           </ProviderWrapper>
