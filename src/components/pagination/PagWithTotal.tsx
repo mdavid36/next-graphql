@@ -1,5 +1,6 @@
 import { Box, Container, Pagination, Typography } from "@mui/material";
 import { CharactersParams } from "../characters/Characters";
+import { useIsSmallScreen } from "@/styles/mediaBreakpoints";
 
 type PagWithTotalProps = {
   data: CharactersParams["data"];
@@ -8,6 +9,7 @@ type PagWithTotalProps = {
 };
 
 const PagWithTotal = ({ data, page, setPage }: PagWithTotalProps) => {
+  const isSmall = useIsSmallScreen();
   return (
     <Container sx={{ mb: 2, display: "flex", justifyContent: "flex-end" }}>
       <Box display="flex" alignItems="center" mr={2}>
@@ -20,6 +22,7 @@ const PagWithTotal = ({ data, page, setPage }: PagWithTotalProps) => {
           count={data.info.pages}
           page={page}
           onChange={(_, value) => setPage(value)}
+          siblingCount={isSmall ? 0 : undefined}
         />
       )}
     </Container>

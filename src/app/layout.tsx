@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ProviderWrapper from "../providers/ProviderWrapper";
-import { Container } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import MainNavigation from "@/components/navigation/MainNavigation";
 
@@ -31,8 +31,13 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <AppRouterCacheProvider>
           <ProviderWrapper>
-            <Container sx={{ bgcolor: "background.default" }} disableGutters>
+            <Container
+              sx={{ bgcolor: "background.default" }}
+              disableGutters
+              maxWidth={false}
+            >
               <MainNavigation />
+              <Box sx={{ pt: 10 }} /> {/* Spacer for fixed nav */}
               {children}
             </Container>
           </ProviderWrapper>
