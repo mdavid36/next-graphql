@@ -18,8 +18,12 @@ function ActiveFilters({ filters }: { filters: FilterCharacter }) {
   });
   return (
     <Box color={"text.secondary"} mb={2}>
-      <h4>Active Filters</h4>
-      <List>{displayedFilters}</List>
+      {displayedFilters.length > 0 && (
+        <>
+          <h4>Active Filters</h4>
+          <List>{displayedFilters}</List>
+        </>
+      )}
     </Box>
   );
 }

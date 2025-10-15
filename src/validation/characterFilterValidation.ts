@@ -10,7 +10,7 @@ import { FilterCharacter } from "@/graphql/getCharacters";
 
 const characterFilterValidation: Yup.ObjectSchema<FilterCharacter> =
   Yup.object().shape({
-    name: nameValidation.optional(),
+    name: nameValidation,
     species: speciesValidation,
     status: statusValidation,
     gender: genderValidation,

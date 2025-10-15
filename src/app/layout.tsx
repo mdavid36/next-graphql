@@ -31,7 +31,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <AppRouterCacheProvider>
           <ProviderWrapper>
-            <Container sx={{ bgcolor: "background.default" }}>
+            <Container sx={{ bgcolor: "background.default" }} disableGutters>
               <MainNavigation />
               {children}
             </Container>
