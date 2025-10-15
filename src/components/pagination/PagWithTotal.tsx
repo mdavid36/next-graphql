@@ -1,5 +1,5 @@
 import { Box, Container, Pagination, Typography } from "@mui/material";
-import { CharactersParams } from "./Characters";
+import { CharactersParams } from "../characters/Characters";
 
 type PagWithTotalProps = {
   data: CharactersParams["data"];

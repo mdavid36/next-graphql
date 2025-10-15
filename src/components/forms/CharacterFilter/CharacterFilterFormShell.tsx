@@ -43,7 +43,7 @@ const CharacterFilterFormShell = ({
         <FormProvider {...methods}>
           <CharacterFilterFormFields />
         </FormProvider>
-        <Box display="flex" gap={2} mb={2}>
+        <Box display="flex" justifyContent="flex-end" gap={2} mb={2}>
           <Button type="submit" variant="contained">
             Apply Filters
           </Button>

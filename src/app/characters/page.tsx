@@ -1,6 +1,6 @@
 "use client";
 import React, { Suspense, useState } from "react";
-import Characters from "@/components/Characters";
+import Characters from "@/components/characters/Characters";
 import { CircularProgress, Container } from "@mui/material";
 import useGetCharacters, {
   CharactersSearchParams,

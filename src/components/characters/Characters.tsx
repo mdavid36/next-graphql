@@ -1,11 +1,11 @@
 import { Alert, Grid } from "@mui/material";
-import CharacterCard from "./character/card/CharacterCard";
+import CharacterCard from "../character/card/CharacterCard";
 import { CharactersSearchResults } from "@/graphql/getCharacters";
-import PagWithTotal from "./PagWithTotal";
+import PagWithTotal from "../pagination/PagWithTotal";
 import CharacterFilterForm, {
   CharacterFilterFormShellProps,
-} from "./forms/CharacterFilter/CharacterFilterFormShell";
-import ActiveFilters from "./forms/CharacterFilter/ActiveFilters";
+} from "../forms/CharacterFilter/CharacterFilterFormShell";
+import ActiveFilters from "../forms/CharacterFilter/ActiveFilters";
 
 export interface CharactersParams extends CharacterFilterFormShellProps {
   data: CharactersSearchResults["characters"];
