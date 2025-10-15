@@ -10,7 +10,7 @@ function ActiveFilters({ filters }: { filters: FilterCharacter }) {
   const displayedFilters = activeFilters.map(([key, value]) => {
     const label = handleLabelFromKey(key);
     return (
-      <ListItem key={key} sx={{ gap: 1 }}>
+      <ListItem key={key} sx={{ gap: 1, display: "flex", width: "unset" }}>
         <Typography>{`${label}:`}</Typography>
         <Typography>{`"${value}"`}</Typography>
       </ListItem>
@@ -21,7 +21,7 @@ function ActiveFilters({ filters }: { filters: FilterCharacter }) {
       {displayedFilters.length > 0 && (
         <>
           <h4>Active Filters</h4>
-          <List>{displayedFilters}</List>
+          <List sx={{ display: "flex" }}>{displayedFilters}</List>
         </>
       )}
     </Box>
