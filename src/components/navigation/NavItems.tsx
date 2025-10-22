@@ -1,4 +1,7 @@
+"use client";
+
 /**
+ * Client component.
  * Dynamically builds navigation menu items or buttons based on screen size.
  * @returns navigation menu item or button components based on screen size.
  */

@@ -1,3 +1,11 @@
+"use client";
+
+/**
+ * Client component.
+ * Menu for small screens.
+ * @returns Menu button and Menu containing navigation items.
+ */
+
 import { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import { IconButton, Menu } from "@mui/material";

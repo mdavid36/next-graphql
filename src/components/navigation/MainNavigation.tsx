@@ -1,4 +1,9 @@
-"use client";
+/**
+ * Server component.
+ * Intended to be used at root layout level.
+ * @returns Main navigation for all screen sizes.
+ */
+
 import { AppBar, Box, Container, Toolbar, Typography } from "@mui/material";
 import React from "react";
 import ScienceIcon from "@mui/icons-material/Science";
